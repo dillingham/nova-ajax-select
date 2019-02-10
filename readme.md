@@ -25,10 +25,11 @@ BelongsTo::make('Company'),
 AjaxSelect::make('User')
     ->get('/api/company/{company}/users')
     ->parent('company'),
-
-BelongsTo::make('User')->exceptOnForms(),
 ```
 Add the field for index & detail views and use AjaxSelect for forms
+```php
+BelongsTo::make('User')->exceptOnForms(),
+```
 
 ### Example Endpoint
 
