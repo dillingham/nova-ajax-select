@@ -14,7 +14,7 @@ composer require dillingham/nova-ajax-select
 
 Specify a url for the field to retrieve data from
 
-Optionally, specifiy a parent() `attribute` to trigger the query:
+Optionally, specifiy a parent() `attribute` to trigger the ajax select:
 
 ```php
 use NovaAjaxSelect\AjaxSelect;
