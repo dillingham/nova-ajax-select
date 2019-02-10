@@ -24,7 +24,7 @@ AjaxSelect::make('User')
     ->get('/api/company/{company}/users')
     ->parent('company'),
 ```
-Add the field for index & detail views and use AjaxSelect for forms
+Add the field for index & detail views display. AjaxSelect is for forms only
 ```php
 BelongsTo::make('User')->exceptOnForms(),
 ```
