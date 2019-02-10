@@ -51,3 +51,4 @@ Route::get('api/company/{company}/users', function($company_id) {
 | {parent} | the value of the parent field | "22" "option" |
 
 **Note:** put the attribute ie `{company}` not `{parent}`
+IE: `Select::make('Some Shirt Size')` would be `{some_shirt_size}`
