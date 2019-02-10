@@ -48,6 +48,6 @@ Route::get('api/company/{company}/users', function($company_id) {
 | - | - | - |
 | {resource-name} | the resource name | "Order" |
 | {resource-id} | the resource being edited | "11"
-| {parent} | the value of the parent filed | "22" "option" |
+| {parent} | the value of the parent field | "22" "option" |
 
-#### Note: put the attribute ie `{company}` not `{parent}`
+**Note:** put the attribute ie `{company}` not `{parent}`
