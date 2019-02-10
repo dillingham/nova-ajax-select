@@ -12,13 +12,29 @@ composer require dillingham/nova-ajax-select
 
 ### Usage
 
-```php
+Specify a url for the field to retrieve data from
 
+Optionally, specifiy a parent() `attribute` to trigger the query:
+
+```php
 BelongsTo::make('Company'),
 
-AjaxSelect::make('Employee')
-    ->get('/api/employees/{company}')
+AjaxSelect::make('Users')
+    ->get('/api/company/{company}/users')
     ->parent('company'),
+```
+
+Example Endpoint
+
+```php
+Route::get('api/company/{company}/users', function($company_id) {
+
+    $company = \App\Company::findOrFail($company_id);
+
+    return $company->users->map(function($user) {
+        return ['key' => $user->id, 'display' => $user->name ];
+    });
+});
 ```
 
 ### Url Options
@@ -27,4 +43,4 @@ AjaxSelect::make('Employee')
 | - | - | - |
 | {resource-name} | the resource name | "Order" |
 | {resource-id} | the resource being edited | "11"
-| {parent} | put the attribute not ie {employee} | "22" |
+| {parent} | put the attribute ie {company} | "22" |
