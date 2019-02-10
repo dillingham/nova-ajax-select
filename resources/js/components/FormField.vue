@@ -1,7 +1,8 @@
 <template>
     <default-field :field="field" :errors="errors">
         <template slot="field">
-             <select v-model="selected" placeholder="Select" class="w-full form-control form-select" :disabled="disabled">
+             <select v-model="selected" class="w-full form-control form-select" :disabled="disabled">
+                <option :value="null">Select a {{ field.name }}</option>
                 <option
                     :key="option.key"
                     :value="option.key"
@@ -26,8 +27,7 @@ export default {
             options: [],
             loaded: false,
             selected: null,
-            parentValue: null,
-            placeholder: null,
+            parentValue: null
         }
     },
 
@@ -82,9 +82,6 @@ export default {
                     .then(response => {
                         this.loaded = true;
                         this.options = response.data;
-                        if(this.options.length > 0) {
-                            this.selected = this.options[0].key
-                        }
                     })
             }
         },
