@@ -50,5 +50,3 @@ Route::get('api/company/{company}/users', function($company_id) {
 | {resource-name} | the resource name | "Order" |
 | {resource-id} | the resource being edited | "11"
 | {parent} | put the attribute ie {company} | "22" |
-
-### Display the fields
