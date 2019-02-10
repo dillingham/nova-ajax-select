@@ -17,6 +17,9 @@ Specify a url for the field to retrieve data from
 Optionally, specifiy a parent() `attribute` to trigger the query:
 
 ```php
+use NovaAjaxSelect\AjaxSelect;
+```
+```php
 BelongsTo::make('Company'),
 
 AjaxSelect::make('Users')
