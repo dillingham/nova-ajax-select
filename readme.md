@@ -17,9 +17,8 @@ composer require dillingham/nova-ajax-select
 BelongsTo::make('Company'),
 
 AjaxSelect::make('Employee')
-    ->parent('company')
-    ->get('/api/employees/{employee}')
-    ->rules('required'),
+    ->get('/api/employees/{company}')
+    ->parent('company'),
 ```
 
 ### Url Options
