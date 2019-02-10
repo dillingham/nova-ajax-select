@@ -22,12 +22,15 @@ use NovaAjaxSelect\AjaxSelect;
 ```php
 BelongsTo::make('Company'),
 
-AjaxSelect::make('Users')
+AjaxSelect::make('User')
     ->get('/api/company/{company}/users')
     ->parent('company'),
-```
 
-Example Endpoint
+BelongsTo::make('User')->exceptOnForms(),
+```
+Add the field for index & detail views and use AjaxSelect for forms
+
+### Example Endpoint
 
 ```php
 Route::get('api/company/{company}/users', function($company_id) {
@@ -47,3 +50,5 @@ Route::get('api/company/{company}/users', function($company_id) {
 | {resource-name} | the resource name | "Order" |
 | {resource-id} | the resource being edited | "11"
 | {parent} | put the attribute ie {company} | "22" |
+
+### Display the fields
