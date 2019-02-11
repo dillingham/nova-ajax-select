@@ -62,7 +62,7 @@ Select::make('Country')->options([]),
 AjaxSelect::make('State')->parent('country'),
 AjaxSelect::make('City')->parent('state'),
 ```
-### Supports multiple children per parent
+### Make multiple children depend on one parent
 
 `File` & `Comment` will both make a request based on `Project`
 
