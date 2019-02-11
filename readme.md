@@ -31,15 +31,9 @@ BelongsTo::make('User')->exceptOnForms(),
 
 ### Request Url
 
-You can pass the following url paramters to `->get()`:
+You can pass the parent attribute paramter to `->get()`:
 
-| parameter | description | value |
-| - | - | - |
-| {resource-name} | the resource name | "Order" |
-| {resource-id} | the resource being edited | "11"
-| {parent} | the value of the parent field | "22" "option" |
-
-Example: {parent} `Select::make('Some Shirt Size')` would be `{some_shirt_size}`
+`parent('shirt_size')->get('/api/products/{shirt_size}')` would be `/api/products/xl`
 
 ### Response Format
 
