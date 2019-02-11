@@ -52,11 +52,8 @@ Route::get('api/company/{company}/users', function($company_id) {
     });
 });
 ```
----
-### More Possibilities
----
 
-✅  **Make children depend on other children**
+### Make children depend on other children
 
 `City` makes a request based on `State`, which makes a request based on `Country`:
 
@@ -65,7 +62,7 @@ Select::make('Country')->options([]),
 AjaxSelect::make('State')->parent('country'),
 AjaxSelect::make('City')->parent('state'),
 ```
-✅  **Supports multiple children per parent**
+### Supports multiple children per parent
 
 `File` & `Comment` will both make a request based on `Project`
 
