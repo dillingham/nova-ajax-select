@@ -3,7 +3,7 @@
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select)
 [![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select)
 
-Nova package to fill a select via ajax & based on other field values
+Ajax populated select fields based on the values of other fields and when they change.
 
 ### Install
 ```
