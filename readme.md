@@ -45,10 +45,7 @@ Route::get('api/company/{company}/users', function($company_id) {
     $company = \App\Company::findOrFail($company_id);
 
     return $company->users->map(function($user) {
-        return [
-            'value' => $user->id,
-            'display' => $user->name
-        ];
+        return [ 'value' => $user->id, 'display' => $user->name ];
     });
 });
 ```
