@@ -29,13 +29,13 @@ Add the field for index & detail views display. AjaxSelect is for forms only
 BelongsTo::make('User')->exceptOnForms(),
 ```
 
-### Request Url
+### Request Url:
 
 In the above example, we say `company` is the parent.
 
-The `{company}` parameter will equal the selected `Company` field value.
+The `{company}` url parameter will equal the selected `Company` field value.
 
-### Response Format
+### Response Format:
 
 The select field expects a "key" & "display". Map your results like so:
 
