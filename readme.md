@@ -54,7 +54,9 @@ Route::get('api/company/{company}/users', function($company_id) {
 
 IE: `Select::make('Some Shirt Size')` would be `{some_shirt_size}`
 
-### More Possibilities
+## More Possibilities
+
+---
 
 ✅ **Make children depend on other children**
 
