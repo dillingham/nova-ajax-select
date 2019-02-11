@@ -1,8 +1,9 @@
 <template>
     <default-field :field="field" :errors="errors">
         <template slot="field">
-             <select v-model="selected" class="w-full form-control form-select" :disabled="disabled">
-                <option :value="null">Select a {{ field.name }}</option>
+             <select v-model="value" class="w-full form-control form-select" :disabled="disabled">
+                <option :value="null" v-if="empty == false">Select a {{ field.name.toLowerCase() }}</option>
+                <option :value="null" v-if="empty">0 {{ field.name.toLowerCase() }} results</option>
                 <option
                     :key="option.key"
                     :value="option.key"
@@ -26,7 +27,6 @@ export default {
         return {
             options: [],
             loaded: false,
-            selected: null,
             parentValue: null
         }
     },
@@ -39,9 +39,10 @@ export default {
             if(component.field.component === 'belongs-to-field') {
                 attribute = 'selectedResource';
             }
-
+            // console.log(component);
             component.$watch(attribute, (value) => {
                 this.parentValue = (value && attribute == 'selectedResource') ? value.value : value;
+                console.log(this.parentValue);
                 this.updateOptions();
             }, { immediate: true });
         });
@@ -59,8 +60,12 @@ export default {
                 .replace('{resource-id}', this.resourceId ? this.resourceId : '')
                 .replace('{'+ this.field.parent_attribute +'}', this.parentValue ? this.parentValue : '')
         },
+        empty() {
+            return this.loaded && this.disabled == false && this.options.length == 0;
+        },
+
         disabled() {
-            return this.options.length == 0 || this.field.parent_attribute == undefined || this.parentValue == null;
+            return this.field.parent_attribute == undefined || this.parentValue == null;
         }
     },
 
@@ -70,12 +75,12 @@ export default {
         },
 
         fill(formData) {
-            formData.append(this.field.attribute, this.selected || '')
+            formData.append(this.field.attribute, this.value || '')
         },
 
         updateOptions() {
             this.options = [];
-            this.selected = null;
+            this.value = null;
 
             if(this.notWatching() || this.parentValue) {
                 Nova.request().get(this.endpoint)
