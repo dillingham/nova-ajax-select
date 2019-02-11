@@ -42,7 +42,7 @@ The select field expects a `value` & `display`. Map your results like so:
 ```php
 Route::get('api/company/{company}/users', function($company_id) {
 
-    $company = \App\Company::findOrFail($company_id);
+    $company = \App\Company::find($company_id);
 
     return $company->users->map(function($user) {
         return [ 'value' => $user->id, 'display' => $user->name ];
