@@ -33,7 +33,7 @@ BelongsTo::make('User')->exceptOnForms(),
 
 In the above example, we say `company` is the parent.
 
-When selected, the `{company}` paramter will equal the company field value.
+When Company is selected, the `{company}` paramter will equal the company field value.
 
 ### Response Format
 
