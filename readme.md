@@ -58,9 +58,16 @@ Route::get('api/company/{company}/users', function($company_id) {
 `City` makes a request based on `State`, which makes a request based on `Country`:
 
 ```php
-Select::make('Country')->options([]),
-AjaxSelect::make('State')->parent('country'),
-AjaxSelect::make('City')->parent('state'),
+Select::make('Country')
+    ->options([]),
+
+AjaxSelect::make('State')
+    ->get('/api/country/{country}/states')
+    ->parent('country'),
+
+AjaxSelect::make('City')
+    ->get('/api/state/{state}/cities')
+    ->parent('state'),
 ```
 ### Make multiple children depend on one parent
 
@@ -68,9 +75,11 @@ AjaxSelect::make('City')->parent('state'),
 
 ```php
 BelongsTo::make('Project'),
+
 AjaxSelect::make('File')
     ->get('/{project}/files')
     ->parent('project'),
+
 AjaxSelect::make('Comment')
     ->get('/{project}/comments')
     ->parent('project'),
