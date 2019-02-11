@@ -31,9 +31,11 @@ BelongsTo::make('User')->exceptOnForms(),
 
 ### Request Url
 
-You can pass the parent attribute paramter to `->get()`:
+You can pass parent value into the request url.
 
-`parent('shirt_size')->get('/api/products/{shirt_size}')` would be `/api/products/xl`
+In the above example, we say `company` is the parent.
+
+When selected, the `{company}` paramter will equal the company field value.
 
 ### Response Format
 
