@@ -29,7 +29,9 @@ Add the field for index & detail views display. AjaxSelect is for forms only
 BelongsTo::make('User')->exceptOnForms(),
 ```
 
-### Example Endpoint
+### Response Format
+
+The select field expects a "key" & "display". Map your results like so:
 
 ```php
 Route::get('api/company/{company}/users', function($company_id) {
@@ -37,7 +39,10 @@ Route::get('api/company/{company}/users', function($company_id) {
     $company = \App\Company::findOrFail($company_id);
 
     return $company->users->map(function($user) {
-        return ['key' => $user->id, 'display' => $user->name ];
+        return [
+            'key' => $user->id,
+            'display' => $user->name
+        ];
     });
 });
 ```
