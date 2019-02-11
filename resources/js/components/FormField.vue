@@ -2,7 +2,7 @@
     <default-field :field="field" :errors="errors">
         <template slot="field">
              <select v-model="value" class="w-full form-control form-select" :disabled="disabled">
-                <option :value="null" v-if="empty == false">Select a {{ field.name.toLowerCase() }}</option>
+                <option :value="null" v-if="empty == false">Select {{ field.name.toLowerCase() }}</option>
                 <option :value="null" v-if="empty">0 {{ field.name.toLowerCase() }} results</option>
                 <option
                     :key="option.key"
