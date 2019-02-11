@@ -31,8 +31,6 @@ BelongsTo::make('User')->exceptOnForms(),
 
 ### Request Url
 
-You can pass parent value into the request url.
-
 In the above example, we say `company` is the parent.
 
 When selected, the `{company}` paramter will equal the company field value.
