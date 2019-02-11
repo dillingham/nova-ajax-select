@@ -37,7 +37,7 @@ The `{company}` url parameter will equal the selected `Company` field value.
 
 ### Response Format:
 
-The select field expects a "key" & "display". Map your results like so:
+The select field expects a `key` & `display`. Map your results like so:
 
 ```php
 Route::get('api/company/{company}/users', function($company_id) {
