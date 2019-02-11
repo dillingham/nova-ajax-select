@@ -68,6 +68,10 @@ AjaxSelect::make('City')->parent('state'),
 
 ```php
 BelongsTo::make('Project'),
-AjaxSelect::make('File')->get('/{project}/files')->parent('project'),
-AjaxSelect::make('Comment')->get('/{project}/comments')->parent('project'),
+AjaxSelect::make('File')
+    ->get('/{project}/files')
+    ->parent('project'),
+AjaxSelect::make('Comment')
+    ->get('/{project}/comments')
+    ->parent('project'),
 ```
