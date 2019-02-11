@@ -58,7 +58,7 @@ IE: `Select::make('Some Shirt Size')` would be `{some_shirt_size}`
 
 ---
 
-✅ **Make children depend on other children**
+✅  **Make children depend on other children**
 
 `City` makes a request based on `State`, which makes a request based on `Country`:
 
@@ -67,7 +67,7 @@ Select::make('Country')->options([]),
 AjaxSelect::make('State')->parent('country'),
 AjaxSelect::make('City')->parent('state'),
 ```
-✅ **Supports multiple children per parent**
+✅  **Supports multiple children per parent**
 
 `File` & `Comment` will both make a request based on `Project`
 
