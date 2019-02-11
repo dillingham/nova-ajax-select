@@ -5,8 +5,8 @@
                 <option :value="null" v-if="empty == false">Select {{ field.name.toLowerCase() }}</option>
                 <option :value="null" v-if="empty">0 {{ field.name.toLowerCase() }} results</option>
                 <option
-                    :key="option.key"
-                    :value="option.key"
+                    :key="option.value"
+                    :value="option.value"
                     v-for="option in options">
                     {{ option.display }}
                 </option>
@@ -39,10 +39,9 @@ export default {
             if(component.field.component === 'belongs-to-field') {
                 attribute = 'selectedResource';
             }
-            // console.log(component);
+
             component.$watch(attribute, (value) => {
                 this.parentValue = (value && attribute == 'selectedResource') ? value.value : value;
-                console.log(this.parentValue);
                 this.updateOptions();
             }, { immediate: true });
         });
