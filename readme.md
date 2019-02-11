@@ -29,6 +29,18 @@ Add the field for index & detail views display. AjaxSelect is for forms only
 BelongsTo::make('User')->exceptOnForms(),
 ```
 
+### Request Url
+
+You can pass the following url paramters to `->get()`:
+
+| parameter | description | value |
+| - | - | - |
+| {resource-name} | the resource name | "Order" |
+| {resource-id} | the resource being edited | "11"
+| {parent} | the value of the parent field | "22" "option" |
+
+Example: {parent} `Select::make('Some Shirt Size')` would be `{some_shirt_size}`
+
 ### Response Format
 
 The select field expects a "key" & "display". Map your results like so:
@@ -46,19 +58,6 @@ Route::get('api/company/{company}/users', function($company_id) {
     });
 });
 ```
-
-### Url Options
-
-| parameter | description | value |
-| - | - | - |
-| {resource-name} | the resource name | "Order" |
-| {resource-id} | the resource being edited | "11"
-| {parent} | the value of the parent field | "22" "option" |
-
-**Note:** put the attribute ie `{company}` not `{parent}`
-
-IE: `Select::make('Some Shirt Size')` would be `{some_shirt_size}`
-
 ---
 ### More Possibilities
 ---
