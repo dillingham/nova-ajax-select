@@ -60,7 +60,7 @@ export default {
                 .replace('{'+ this.field.parent_attribute +'}', this.parentValue ? this.parentValue : '')
         },
         empty() {
-            return this.loaded && this.disabled == false && this.options.length == 0;
+            return this.loaded && this.options.length == 0;
         },
 
         disabled() {
