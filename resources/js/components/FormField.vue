@@ -2,8 +2,7 @@
     <default-field :field="field" :errors="errors">
         <template slot="field">
              <select v-model="value" class="w-full form-control form-select" :disabled="disabled">
-                <option :value="null" v-if="empty == false">Select {{ field.name.toLowerCase() }}</option>
-                <option :value="null" v-if="empty">0 {{ field.name.toLowerCase() }} results</option>
+                <option :value="null">Choose an option</option>
                 <option
                     :key="option.value"
                     :value="option.value"
@@ -41,7 +40,9 @@ export default {
             }
 
             component.$watch(attribute, (value) => {
+
                 this.parentValue = (value && attribute == 'selectedResource') ? value.value : value;
+
                 this.updateOptions();
             }, { immediate: true });
         });
@@ -60,11 +61,12 @@ export default {
                 .replace('{'+ this.field.parent_attribute +'}', this.parentValue ? this.parentValue : '')
         },
         empty() {
+            console.log( this.options.length)
             return this.loaded && this.options.length == 0;
         },
 
         disabled() {
-            return this.field.parent_attribute == undefined || this.parentValue == null;
+            return this.loaded == false && (this.field.parent_attribute != undefined && this.parentValue == null) || this.options.length == 0;
         }
     },
 
@@ -80,8 +82,9 @@ export default {
         updateOptions() {
             this.options = [];
             this.value = null;
+            this.loaded = false;
 
-            if(this.notWatching() || this.parentValue) {
+            if(this.notWatching() || (this.parentValue != null && this.parentValue != '')) {
                 Nova.request().get(this.endpoint)
                     .then(response => {
                         this.loaded = true;
