@@ -61,7 +61,6 @@ export default {
                 .replace('{'+ this.field.parent_attribute +'}', this.parentValue ? this.parentValue : '')
         },
         empty() {
-            console.log( this.options.length)
             return this.loaded && this.options.length == 0;
         },
 
@@ -81,7 +80,6 @@ export default {
 
         updateOptions() {
             this.options = [];
-            this.value = null;
             this.loaded = false;
 
             if(this.notWatching() || (this.parentValue != null && this.parentValue != '')) {
@@ -89,6 +87,16 @@ export default {
                     .then(response => {
                         this.loaded = true;
                         this.options = response.data;
+                        let optionValueExists = false;
+                        this.options.forEach(option => {
+                            if(option.value == this.value) {
+                                optionValueExists = true;
+                            }
+                        })
+
+                        if(optionValueExists == false) {
+                            this.value = null;
+                        }
                     })
             }
         },
