@@ -49,7 +49,7 @@ Route::get('api/company/{company}/users', function($company_id) {
     return $company->users->map(function($user) {
         return [ 'value' => $user->id, 'display' => $user->name ];
     });
-});
+})->middleware(['nova']);
 ```
 
 ### Make children depend on other children
