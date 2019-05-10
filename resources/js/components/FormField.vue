@@ -2,7 +2,7 @@
     <default-field :field="field" :errors="errors">
         <template slot="field">
              <select v-model="value" class="w-full form-control form-select" :disabled="disabled">
-                <option :value="null">Choose an option</option>
+                <option :value="null">{{ __('Choose an option') }}</option>
                 <option
                     :key="option.value"
                     :value="option.value"
