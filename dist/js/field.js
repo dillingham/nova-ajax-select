@@ -313,6 +313,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.field.extraAttributes ? this.field.extraAttributes.readonly === true : false;
         },
         disabled: function disabled() {
+            if (this.readonly) return true;
+
             return this.loaded == false && this.field.parent_attribute != undefined && this.parentValue == null || this.options.length == 0;
         }
     },
@@ -10608,7 +10610,7 @@ var render = function() {
               }
             ],
             staticClass: "w-full form-control form-select",
-            attrs: { readonly: _vm.readonly, disabled: _vm.disabled },
+            attrs: { disabled: _vm.disabled },
             on: {
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
