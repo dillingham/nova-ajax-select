@@ -40,6 +40,17 @@ export default {
                 attribute = 'selectedResource';
             }
 
+            if (component.field.component === 'belongs-to-many-field') {
+                attribute = 'selected';
+                
+                component.$children.forEach(childComponent => {
+                    
+                    if ('selected' in childComponent) {
+                        component = childComponent;
+                    }
+                })
+            }
+
             component.$watch(attribute, (value) => {
 
                 this.parentValue = (value && attribute == 'selectedResource') ? value.value : value;
