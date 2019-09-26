@@ -25,4 +25,11 @@ class AjaxSelect extends Field
 
         return $this;
     }
+
+    public function child($attribute, $key = 'bedroom_price')
+    {
+        $this->withMeta(['child_attribute' => $attribute, 'array_key' => $key]);
+
+        return $this;
+    }
 }

@@ -1,7 +1,7 @@
 <template>
     <default-field :field="field" :errors="errors">
         <template slot="field">
-             <select v-model="value" class="w-full form-control form-select" :disabled="disabled">
+             <select v-model="value" @change="updateChild()" class="w-full form-control form-select" :disabled="disabled">
                 <option :value="null" v-if="loaded && options.length">{{ __('Choose an option') }}</option>
                 <option :value="null" v-if="loaded && options.length == 0">{{ __('No Results') }}</option>
                 <option
@@ -92,7 +92,9 @@ export default {
 
         updateOptions() {
             this.options = [];
+            this.value = null;
             this.loaded = false;
+            this.setChildValue(null);
 
             if(this.notWatching() || (this.parentValue != null && this.parentValue != '')) {
                 Nova.request().get(this.endpoint)
@@ -111,6 +113,29 @@ export default {
                         }
                     })
             }
+        },
+
+        updateChild() {
+            if (this.field.child_attribute) {
+
+                let key = this.field.array_key ? this.field.array_key : 'child_value';
+
+                this.options.forEach((option) => {
+
+                    if (option.value == this.value) {
+                        this.setChildValue((option.value * option[key]));
+                    }
+                });
+            }
+        },
+
+        setChildValue(value) {
+            this.$parent.$children.forEach((component) => {
+
+                if (component.field.attribute === this.field.child_attribute) {
+                    component.value = value;
+                }
+            });
         },
 
         notWatching() {

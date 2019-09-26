@@ -1,15 +1,30 @@
-# Nova Ajax Select
+# Nova Guest Selection
 
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select)
 [![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select) [![Twitter Follow](https://img.shields.io/twitter/follow/dillinghammm?color=%231da1f1&label=Twitter&logo=%231da1f1&logoColor=%231da1f1&style=flat-square)](https://twitter.com/dillinghammm)
 
 Ajax populated select fields based on the values of other fields and when they change.
 
-![nova-ajax-select](https://user-images.githubusercontent.com/29180903/52602810-15c53900-2e32-11e9-9ade-492bfe80b234.gif)
+![nova-ajax-select](https://i.imgur.com/mUgM346.gif)
 
 ### Install
+In your composer.json:
 ```
-composer require dillingham/nova-ajax-select
+"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/igorw/monolog"
+        }
+    ],
+```
+
+```
+"require": {
+        "dillingham/nova-ajax-select": "^1.0",
+    }
+```
+```
+composer update
 ```
 
 ### Usage
@@ -26,6 +41,18 @@ AjaxSelect::make('User')
     ->get('/api/company/{company}/users')
     ->parent('company'),
 ```
+
+Set the value of the "Tarifa" child input where "price" is the name attribute of the child input, and "keyname" is the name of the index 
+key from the response array.
+```php
+BelongsTo::make('Company'),
+
+AjaxSelect::make('User')
+    ->get('/api/company/{company}/users')
+    ->parent('company'),
+    ->child('price', 'keyname')
+```
+
 Add the field for index & detail views display. AjaxSelect is for forms only
 ```php
 BelongsTo::make('User')->exceptOnForms(),
@@ -48,6 +75,18 @@ Route::get('api/company/{company}/users', function($company_id) {
 
     return $company->users->map(function($user) {
         return [ 'value' => $user->id, 'display' => $user->name ];
+    });
+})->middleware(['nova']);
+```
+
+Optionally you cant set the value, the child component will get.
+```php
+Route::get('api/company/{company}/users', function($company_id) {
+
+    $company = \App\Company::find($company_id);
+
+    return $company->users->map(function($user) {
+        return [ 'value' => $user->id, 'display' => $user->name, 'bedroom_price' => $habitacion->price ];
     });
 })->middleware(['nova']);
 ```
