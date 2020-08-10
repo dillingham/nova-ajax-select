@@ -1,7 +1,7 @@
 # Nova Ajax Select
 
 [![Latest Version on Github](https://img.shields.io/github/release/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select)
-[![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select) [![Twitter Follow](https://img.shields.io/twitter/follow/dillinghammm?color=%231da1f1&label=Twitter&logo=%231da1f1&logoColor=%231da1f1&style=flat-square)](https://twitter.com/dillinghammm)
+[![Total Downloads](https://img.shields.io/packagist/dt/dillingham/nova-ajax-select.svg?style=flat-square)](https://packagist.org/packages/dillingham/nova-ajax-select) [![Twitter Follow](https://img.shields.io/twitter/follow/dillinghammm?color=%231da1f1&label=Twitter&logo=%231da1f1&logoColor=%231da1f1&style=flat-square)](https://twitter.com/im_brian_d)
 
 Ajax populated select fields based on the values of other fields and when they change.
 
@@ -83,3 +83,13 @@ AjaxSelect::make('Comment')
     ->get('/{project}/comments')
     ->parent('project'),
 ```
+
+---
+
+# Author
+
+Hi 👋, Im Brian Dillingham, creator of this Nova package [and others](https://novapackages.com/collaborators/dillingham)
+
+Hope you find it useful. Feel free to reach out with feedback.
+
+Follow me on twitter: [@im_brian_d](https://twitter.com/im_brian_d) 
