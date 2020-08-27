@@ -32,6 +32,10 @@ export default {
     },
 
     mounted() {
+        if(!this.parent_attribute) {
+            this.updateOptions();
+        }
+
         this.watchedComponents.forEach(component => {
 
             let attribute = 'value'
@@ -51,6 +55,10 @@ export default {
 
     computed: {
         watchedComponents() {
+            if(!this.field.parent_attribute) {
+                return [];
+            }
+
             return this.$parent.$children.filter(component => {
                 return this.isWatchingComponent(component);
             })
