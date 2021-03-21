@@ -8,8 +8,6 @@ class AjaxSelect extends Field
 {
     public $showOnIndex = false;
 
-    public $showOnDetail = false;
-
     public $component = 'nova-ajax-select';
 
     public function get($endpoint)
