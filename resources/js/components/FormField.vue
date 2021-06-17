@@ -2,11 +2,11 @@
     <default-field :field="field" :errors="errors">
         <template slot="field">
             <select
-             v-model="value"
-             class="w-full form-control form-select"
-             :disabled="disabled"
-             :id="field.attribute"
-             :dusk="field.attribute"
+                v-model="value"
+                class="w-full form-control form-select"
+                :disabled="disabled"
+                :id="field.attribute"
+                :dusk="field.attribute"
             >
                 <option :value="null" v-if="loaded && options.length">{{ __('Choose an option') }}</option>
                 <option :value="null" v-if="loaded && options.length == 0">{{ __('No Results') }}</option>
